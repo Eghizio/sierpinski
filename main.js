@@ -70,9 +70,13 @@ class Sierpinski {
   }
 }
 
-const A = new Point(0, -400);
-const B = new Point(400, 400);
-const C = new Point(-400, 400);
+const size = Math.min(window.innerWidth, window.innerHeight) * 0.8;
+const maxTriangleSize = parseInt(size / 100, 10) * 100;
+const offset = maxTriangleSize / 2;
+
+const A = new Point(0, -offset);
+const B = new Point(offset, offset);
+const C = new Point(-offset, offset);
 
 const triangle = new Triangle(A, B, C);
 
