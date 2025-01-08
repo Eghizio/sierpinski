@@ -1,30 +1,19 @@
 import { Point, Line, Triangle } from "./js/shapes.js";
-import { rngColor } from "./js/rendering.js";
+import { rngColor, clearCanvas } from "./js/rendering.js";
 import { rnd, rndElem, minmax, arrayOf, sleep } from "./js/utils.js";
 import { Config } from "./js/config.js";
+import { bindControlsToConfig } from "./js/controls.js";
 
-const theme =
-  window
-    .getComputedStyle(document.documentElement)
-    .getPropertyValue("--color") ?? rngColor();
-
-const delayRange = document.querySelector("input[type=range]");
-const delay = delayRange.valueAsNumber ?? 0;
-
-const config = new Config({
+export const config = new Config({
   color: rngColor(),
-  theme,
+  theme: rngColor(),
   radius: 1,
   iterations: 100_000,
-  delay,
+  delay: 0,
   instant: true,
 });
 
-delayRange.addEventListener("input", (event) => {
-  const delay = event.target.valueAsNumber;
-  config.delay = delay;
-  delayRange.title = `Delay: ${delay}ms`;
-});
+bindControlsToConfig(config);
 
 class Sierpinski {
   constructor(triangle, config = new Config()) {
@@ -88,3 +77,8 @@ const C = new Point(-400, 400);
 const triangle = new Triangle(A, B, C);
 
 new Sierpinski(triangle, config).runSimulation();
+
+document.querySelector("button").addEventListener("click", () => {
+  clearCanvas();
+  new Sierpinski(triangle, config).runSimulation();
+});

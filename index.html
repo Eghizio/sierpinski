@@ -9,14 +9,60 @@
   </head>
   <body>
     <main class="column">
-      <input
-        type="range"
-        step="1"
-        min="0"
-        max="1000"
-        value="0"
-        title="Delay: 0ms"
-      />
+      <nav class="column w-full">
+        <div class="w-full row container">
+          <label class="row">
+            <input type="color" />
+            <p>Points color</p>
+          </label>
+
+          <label class="row">
+            <select>
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <p>Points size</p>
+          </label>
+
+          <label class="row">
+            <input
+              type="number"
+              value="100000"
+              min="1"
+              max="1000000"
+              step="1"
+            />
+            <p>Iterations</p>
+          </label>
+
+          <label class="row">
+            <input type="checkbox" checked />
+            <p>Instant</p>
+          </label>
+
+          <button type="button">Restart</button>
+        </div>
+        <label class="w-full">
+          <p>Delay:</p>
+          <input
+            class="w-full"
+            type="range"
+            step="1"
+            min="0"
+            max="1000"
+            value="0"
+            title="Delay: 0ms"
+          />
+        </label>
+      </nav>
       <canvas width="900" height="900"></canvas>
     </main>
   </body>
